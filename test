@@ -45,16 +45,16 @@
 ;; where ctv (“character-to-value”) maps ‘a’ to 1, ‘b’ to 2, ... and ‘z’ to 26.
 ;; Needs to hall null check when to multiply by 5187
 (define key
-  (lambda (w)
+	(lambda (w)
           (if (null? w)
             5187 
             (+(ctv (car w))(* 29 (key (cdr w)))))))
 
-    ; key = key * 29 + ctv(c) 
-    ; (key '(A B C)) = ctv(C) + 29 * (ctv (B) + 29 *(ctv(A) + (29 * ctv(null)= 5187)))
-    ; (key '(A B C)) = ctv(C) + 29 * (ctv (B) + 29 * (ctv(A) + 29 *)
+		; key = key * 29 + ctv(c) 
+		; (key '(A B C)) = ctv(C) + 29 * (ctv (B) + 29 *(ctv(A) + (29 * ctv(null)= 5187)))
+		; (key '(A B C)) = ctv(C) + 29 * (ctv (B) + 29 * (ctv(A) + 29 *)
                 ; if(w = null) key = 5187 else key = key * 29 + ctv(w)
-    ; starting from last character  
+		; starting from last character  
        ;; *** FUNCTION BODY IS MISSING ***
 
 ;; -----------------------------------------------------
@@ -84,7 +84,7 @@
 
 (define hash-1 (gen-hash-division-method 70111))
 (define hash-2 (gen-hash-division-method 89997))
-
+(hash-1 '(h e l l o))
 ;; -----------------------------------------------------
 ;; EXAMPLE HASH VALUES
 ;;   to test your hash function implementation
@@ -170,27 +170,21 @@
   (lambda(hashList dictionary)
      (if (null? hashList)
         '()
-        (append (hashDictionary (car hashList) dictionary) (createBitvector (cdr hashList) dictionary)))))
+        (append hashDictionary((car hashList) dictionary) bitvector((cdr hashList) dictionary)))))
 
 ; Hash all words in a dictionary and append them to list 
 (define hashDictionary
   (lambda (hashfunction dict)
     (if (null? dict)
         '()
-        (map hashFunction dict)
+        map(hashFunction dict)
     )
   )
 )
-  
 
 
-;; CreateBitVector Test
-(if(equal?(car(createBitVector hashfl-1 dictionary))(hash-1 (car dictionary)))
-   "Might have worked need better check"
-   "Def didnt work")
-(createBitVector hashfl-2 dictionary)
-(createBitVector hashfl-3 dictionary)
 
+(createBitVector hashfl-2 
 ; For each word 
 ;(define gen-checker
  ; (lambda (hashfunctionlist dict) ;; hashfunctionlist dict is a list of hash functions (define hashfl-1 (list hash-1 hash-2 hash-3 hash-4))
